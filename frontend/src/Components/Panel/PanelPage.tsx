@@ -23,7 +23,7 @@ const PanelPage: React.FC<IProps> = (props: IProps) => {
            <p>Dashboard</p>
            <Spinner loading={props.panelData.loading} />
            {props.panelData.data && props.panelData.data.page === null && <button onClick={() => {
-               props.history.push("/Generator/2")
+               props.history.push("/Generator/1")
            }}>INITIAL</button>}
            </div>
            <Sidebar />

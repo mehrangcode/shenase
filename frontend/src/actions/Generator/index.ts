@@ -1,1 +1,1 @@
-export {getTemplate as getSamplePage} from "./action";
+export {getTemplate} from "./action";

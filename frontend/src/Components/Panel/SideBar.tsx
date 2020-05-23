@@ -9,8 +9,8 @@ export const Sidebar = () => {
     }
     return (
         <React.Fragment>
-            <div className="SidebarFab" onClick={() => toggleMenu(!showMenu)}>
-                +
+            <div className="SidebarFab" onClick={() => toggleMenu(!showMenu)}>            
+                Menu
             </div>
             <div className={sidebarClassName}>
                 <div className="sidebarBlock">

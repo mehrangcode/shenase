@@ -23,10 +23,9 @@
 }
 
 .SidebarFab {
-	border: 3px solid #b02929;
-	background-color: lightcoral;
-	width: 60px;
-	height: 60px;
+	background-color: royalblue;
+	width: 70px;
+	height: 70px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -34,9 +33,11 @@
 	position: fixed;
 	bottom: 50px;
 	right: 30px;
-	font-size: 30px;
+	font-size: 15px;
 	cursor: pointer;
 	z-index: 301;
+	color: white;
+	box-shadow: 2px 2px 15px 3px #000;
 }
 
 .Sidebar.sidebarActive {

@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { Sidebar } from './SideBar';
-import { Switch, Route } from 'react-router-dom';
 import { IPanelState } from '../../actions/Panel/model';
 import * as PanelActions from '../../actions/Panel';
 import { IFormProps } from '../../Utils/FormController';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../store/state';
+import Spinner from '../../Utils/Spinner';
 type IProps = IPanelState & typeof PanelActions & IFormProps;
 const PanelPage: React.FC<IProps> = (props: IProps) => {
     
     useEffect(() => {
         props.getPanelData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -19,7 +20,8 @@ const PanelPage: React.FC<IProps> = (props: IProps) => {
         <div className="container">
            <div className="content">
            <p>Dashboard</p>
-           {props.panelData.data && !props.panelData.data.page && <p>INITIAL</p>}
+           <Spinner loading={props.panelData.loading} />
+           {props.panelData.data && props.panelData.data.page === null && <p>INITIAL</p>}
            </div>
            <Sidebar />
         </div>

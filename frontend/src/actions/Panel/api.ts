@@ -4,15 +4,7 @@ const PanelUrl = urlGeneral + urlVersion
 
 export const PanelApi = {
     getPanelData : async () => {
-        return axios.get(PanelUrl+ "/adminPanel")
-    },
-
-    // PRODUCTS API
-    createNoteBook : async (data: any) => {
-        return axios.post(PanelUrl+ "/products", data)
-    },
-    deleteNoteBook : async (notebookId: number) => {
-        return axios.delete(PanelUrl+ "/products/"+notebookId)
+        return axios.get(PanelUrl+ "/users/getPanelData")
     },
     
 }

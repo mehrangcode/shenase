@@ -5,6 +5,10 @@ use \App\Models\User;
 use \Firebase\JWT\JWT;
 class UserController extends Controller
 {
+    public function creatorId($request) {
+        $token = $request->getAttribute("jwt");
+        return $token['context']->id;
+    }
 
     public static function getToken($user)
 	{
@@ -112,5 +116,13 @@ class UserController extends Controller
        $user = User::with('roles:title')->where('id', $userId)->get();
         return $response->withStatus(200)->withJson(["message" => $user]);
 
+    }
+
+    public function getUserData($request, $response){
+        $token = $request->getAttribute("jwt");
+        $userId = $token['context']->id;
+
+        $user = User::with('page')->where('id', $userId)->first();
+        return $response->withStatus(200)->withJson($user);
     }
 }

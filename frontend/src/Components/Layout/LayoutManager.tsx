@@ -22,9 +22,6 @@ const LayoutManager: React.FC<IProps> = (props: IProps) => {
             <div className="layoutManeger">
             <Switch>
                 {props.isAuth ? (
-                <Route path="/adminPanel" component={PanelPage} />
-                    ) : null}
-                {props.isAuth ? (
                 <Route path="/calendar" component={CalendarPage} />
                     ) : null}
                 {props.isAuth ? (

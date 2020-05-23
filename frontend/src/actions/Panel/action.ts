@@ -4,9 +4,6 @@ import { ActionModel } from "./model";
 import { PanelApi } from "./api";
 import { EModal } from "../../Utils/Errors/Modal";
 
-// export const PanelActions = {
-
-    //Get Data
     export const getPanelData= (): AppAction<ActionModel> => async (dispatch, getState) => {
         dispatch({type: PanelActionTypes.GetPanelData})
         try {
@@ -21,4 +18,3 @@ import { EModal } from "../../Utils/Errors/Modal";
         }
         
     }
-// };

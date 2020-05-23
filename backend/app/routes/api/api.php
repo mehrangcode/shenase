@@ -13,6 +13,7 @@ $app->get('/api/users', "UserController:index");
 $app->post('/api/users/register', "UserController:register");
 $app->post('/api/users/login', "UserController:login");
 $app->get('/api/users/getinfo', "UserController:get_user_data");
+$app->get('/api/users/getPanelData', "UserController:getUserData");
 
 //Role
 $app->get('/api/role', "RoleController:index");

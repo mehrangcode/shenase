@@ -25,3 +25,6 @@ $container['PermissionController'] = function($container) {
 $container['LoaderController'] = function($container) {
     return new \App\Controllers\LoaderController($container);
 };
+$container['TemplateController'] = function($container) {
+    return new \App\Controllers\TemplateController($container);
+};

@@ -6,7 +6,8 @@ import { IFormProps } from '../../Utils/FormController';
 import { connect } from 'react-redux';
 import { IApplicationState } from '../../store/state';
 import Spinner from '../../Utils/Spinner';
-type IProps = IPanelState & typeof PanelActions & IFormProps;
+import { RouteComponentProps } from 'react-router';
+type IProps = IPanelState & typeof PanelActions & IFormProps & RouteComponentProps;
 const PanelPage: React.FC<IProps> = (props: IProps) => {
     
     useEffect(() => {
@@ -21,7 +22,9 @@ const PanelPage: React.FC<IProps> = (props: IProps) => {
            <div className="content">
            <p>Dashboard</p>
            <Spinner loading={props.panelData.loading} />
-           {props.panelData.data && props.panelData.data.page === null && <p>INITIAL</p>}
+           {props.panelData.data && props.panelData.data.page === null && <button onClick={() => {
+               props.history.push("/Generator/2")
+           }}>INITIAL</button>}
            </div>
            <Sidebar />
         </div>

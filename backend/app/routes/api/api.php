@@ -39,3 +39,10 @@ $app->post('/api/gallery/createfolder', "LoaderController:createFolder");
 $app->post('/api/uploader', "LoaderController:uploader");
 $app->post('/api/fileuploader', "LoaderController:fileUploader");
 $app ->post("/api/loader", "LoaderController:loader");
+
+//Template
+$app->get('/api/templates', "TemplateController:index");
+$app->get('/api/templates/{templateId}', "TemplateController:findOne");
+$app->post('/api/templates', "TemplateController:create");
+$app->put('/api/templates/{templateId}', "TemplateController:update");
+$app->delete('/api/templates/{templateId}', "TemplateController:delete");

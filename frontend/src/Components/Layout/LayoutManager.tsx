@@ -11,6 +11,7 @@ import { IApplicationState } from '../../store/state';
 import PanelPage from '../Panel/PanelPage';
 import CalendarPage from '../Calendar/CalendarPage';
 import Footer from '../Footer';
+import Generator from '../Generator';
 
 
 
@@ -21,6 +22,9 @@ const LayoutManager: React.FC<IProps> = (props: IProps) => {
             <Navbar {...props} />
             <div className="layoutManeger">
             <Switch>
+                {props.isAuth ? (
+                <Route path="/generator/:sampleId" component={Generator} />
+                    ) : null}
                 {props.isAuth ? (
                 <Route path="/calendar" component={CalendarPage} />
                     ) : null}

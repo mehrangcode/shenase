@@ -1,0 +1,46 @@
+.iconMenu {
+	height: 25px;
+	width: 30px;
+	cursor: pointer;
+}
+.palletHeader {
+	position: relative;
+	background-color: $header;
+	height: 40px;
+	color: $light_font;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+}
+.blankBox {
+	height: 200px;
+}
+
+.spinner {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #ffffffb8;
+	z-index: 200;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer {
+	min-height: 250px;
+	background-color: #222;
+	color: white;
+	padding: 15px;
+	box-sizing: border-box;
+	margin-top: 25px;
+}
+
+hr {
+	color: #ccc;
+}
+
+.layoutManeger {
+	min-height: 80vh;
+}

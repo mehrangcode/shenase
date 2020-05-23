@@ -1,0 +1,68 @@
+.itemWrapper {
+    padding: 5px;
+    textarea {
+        width: 100%;
+        min-height: 200px;
+        box-sizing: border-box;
+        resize: none;
+    }
+}
+.editorClassName {
+	border: 1px solid #aaa;
+	min-height: 300px;
+	max-height: 300px;
+}
+.rdw-image-modal-size-input {
+	width: 30px !important;
+}
+input {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    height: 30px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    transition: all 250ms;
+}
+input:focus {
+    border-color: blue;
+    box-shadow: 0 0 5px rgb(90, 156, 175);
+}
+label {
+    font-size: 13px;
+	font-style: italic;
+	margin: 5px;
+	display: block;
+}
+
+.removeButton {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid red;
+	color: red;
+	cursor: pointer;
+	margin-top: 25px;
+	background-color: #fff;
+	transition: all 250ms;
+	position: absolute;
+	right: 8px;
+	top: -22px;
+}
+
+.removeButton:hover {
+	border-radius: 5px;
+	color: white;
+	background-color: red;
+	// transform: rotate(90deg);
+}
+.removeButton:focus {
+	border-radius: 5px;
+	color: white;
+	background-color: red;
+	// transform: rotate(90deg);
+}
+
+button {
+	min-height: 30px;
+}

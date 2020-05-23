@@ -1,0 +1,65 @@
+.selecContainer {
+    margin: 0 auto;
+    position: relative;
+}
+.displayContainer {
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid #999;
+	background-color: white;
+	min-height: 30px;
+	border-radius: 5px;
+}
+.inputContainer {
+    width: 19px;
+}
+.selectInput {
+    width: 19px  !important;
+    border: none  !important;
+    margin: 0 5px  !important;
+}
+.selectInput:focus {
+	box-shadow: none !important;
+	border: none;
+}
+.selectBtn {
+    width: 25px;
+    border-left: 1px solid $theme_light;
+    cursor: pointer;
+    font-size: 10px;
+    text-align: center;
+    padding-top: 8px;
+}
+.optionContainer {
+    position: absolute;
+    width: 100%;
+    border: 1px solid $theme_light;
+    left: 0;
+    box-sizing: border-box;
+    max-height: 210px;
+    overflow-y: auto;
+    transition: all 200ms;
+    background-color: white;
+    z-index: 2;
+}
+.selectOption {
+    height: 30px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.activeOption,
+.selectOption:focus,
+.selectOption:hover {
+    background-color: $theme_light;
+    color: white;
+}
+.selectDisplay {
+    width: 100%;
+    text-align: left;
+    min-height: 20px;
+}
+.optionHide {
+    max-height: 0px;
+    z-index: -1;
+    border: none;
+}

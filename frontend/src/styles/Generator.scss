@@ -23,6 +23,28 @@
     border: 1px dashed royalblue !important;
 }
 
+.engine {
+	display: flex;
+}
+.generatorSideBar {
+	width: 0;
+	flex-shrink: 0;
+	border-left: 1px solid #ccc;
+	padding: 0;
+	min-height: 100vh;
+    transition: all 250ms;
+    overflow-x: hidden;
+    transition: all 250ms;
+}
+
+.template {
+	width: 100%;
+}
+.generatorSideBar.active {
+    padding: 5px;
+    width: 400px;
+}
+
 .floatBox {
 	background-color: white;
     border: 1px solid #444;

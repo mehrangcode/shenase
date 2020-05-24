@@ -1,27 +1,50 @@
 .editor {
     position: relative;
-    height: 0;
+    height: 0px;
     display: none;
 }
-.rightPanel {
+.parentPanel {
     position: absolute;
-    right: 0;
-    top: 0;
+    left: 0px;
+    bottom: 100%;
+    display: none;
 }
-.leftPanel {
+.childPanel {
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 100%;
+    display: none;
 }
-.col-3:hover > .editor {
+.el:hover > .childPanel,
+.el:hover > .parentPanel {
     display: block;
 }
-.col-6:hover > .editor {
-    display: block;
+.el:hover {
+    border: 1px dashed royalblue !important;
 }
-.row:hover > .editor {
-    display: block;
+
+.floatBox {
+	background-color: white;
+    border: 1px solid #444;
+    position: fixed;
+	width: 350px;
+    z-index: 3;
+    top: 10vh;
+    left: 10vw;
 }
-.hover {
-    border:  1px dashed lightcoral;
+
+.floatBoxTitle {
+	height: 25px;
+	cursor: move;
+	background-color: #18a689;
+	margin-bottom: 15px;
+	padding: 5px 10px;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.floatBoxBody {
+    padding: 5px;
 }

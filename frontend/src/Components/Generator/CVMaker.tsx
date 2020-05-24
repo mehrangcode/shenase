@@ -50,7 +50,7 @@ const CVMaker: React.FC<IProps> = (props: IProps) => {
                         key={item.id}
                         style={item.style}>
                         {item.content ?
-                         <div className="col" dangerouslySetInnerHTML={{ __html: item.content }} /> 
+                         <div className="col mv-2" dangerouslySetInnerHTML={{ __html: item.content }} /> 
                          : null}
                         {personalInfo && personalInfo.skills.map((skill: any) => {
                             return <div 

@@ -141,7 +141,7 @@ export const CVTemplate = {
                     {
                         tooltip: "Skills", id: "skill",
                         type: "skills", className: "row",
-                        style: null, content: "<span> Skills: </span>",
+                        style: null, content: "Skills:",
                         cols: 3,
                     }
 

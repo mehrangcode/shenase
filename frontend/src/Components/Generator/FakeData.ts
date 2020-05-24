@@ -7,7 +7,7 @@ export const fakeData = {
             type: "div",
             className: "row",
             style: {
-                color: "orange"
+                // color: "orange"
             },
             children: [
                 {
@@ -18,6 +18,24 @@ export const fakeData = {
                         border: "1px solid #777"
                     },
                     content: "Hi Im Mehran"
+                },
+                {
+                    id: "id27482",
+                    type: "contentBox",
+                    className:"col-3",
+                    style: {
+                        border: "1px solid #777"
+                    },
+                    content: "Hi Im Col"
+                },
+                {
+                    id: "id2658",
+                    type: "contentBox",
+                    className:"col-3",
+                    style: {
+                        border: "1px solid #777"
+                    },
+                    content: "Hi Im Ganjgahi"
                 },
                 {
                     id: "id3",

@@ -1,0 +1,27 @@
+.editor {
+    position: relative;
+    height: 0;
+    display: none;
+}
+.rightPanel {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.leftPanel {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.col-3:hover > .editor {
+    display: block;
+}
+.col-6:hover > .editor {
+    display: block;
+}
+.row:hover > .editor {
+    display: block;
+}
+.hover {
+    border:  1px dashed lightcoral;
+}

@@ -7,32 +7,36 @@ import { RouteComponentProps } from 'react-router';
 import { fakeData } from './FakeData'
 
 
-type IProps = IGeneratorState & typeof GeneratorActions & RouteComponentProps<{sampleId: string}>;
+type IProps = IGeneratorState & typeof GeneratorActions & RouteComponentProps<{ sampleId: string }>;
 
 const Generator: React.FC<IProps> = (props: IProps) => {
 
-    const [elements, loadElements] = React.useState()
-    React.useEffect(()=>{
+    const [elements, loadElements] = React.useState(null)
+    const [objElement, setObjElements] = React.useState(null)
+    React.useEffect(() => {
         props.getTemplate(props.match.params.sampleId)
         loadElements(generateElements())
-    },[])
+    }, []);
+    // e.stopPropagation(); thats stop trackin up for click event
+
     const generateElements = (item: any = null) => {
         let elements: any = null
         const el = item ? item : fakeData.children
         return el.map((item: any) => {
             switch (item.type) {
                 case "div":
-                    return elements = <div key={item.id
-                    } style={item.style}
-                    onClick={() => console.log("ID: ", item.id)}
-                     className={item.className}>
+                    return elements = <div
+                        className={item.className}
+                        key={item.id}
+                        style={item.style}
+                    >
                         {generateElements(item.children)}
                     </div>
                 case "contentBox":
-                    return elements = <div key={item.id} 
-                    style={item.style} 
-                    onClick={() => console.log("ID: ", item.id)}
-                    className={item.className}>
+                    return elements = <div
+                        className={item.className}
+                        key={item.id}
+                        style={item.style}>
                         {item.content}
                     </div>
                 default:
@@ -43,12 +47,12 @@ const Generator: React.FC<IProps> = (props: IProps) => {
 
     console.log("Elements: ", elements)
     return (
-    <div>
-        <h1> Generator</h1>
-        <div className="template">
-            {elements}
+        <div>
+            <h1> Generator</h1>
+            <div className="template">
+                {elements}
+            </div>
         </div>
-    </div>
     )
 }
 

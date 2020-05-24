@@ -4,7 +4,7 @@ import { IApplicationState } from '../../store/state';
 import { IGeneratorState } from '../../actions/Generator/model';
 import * as GeneratorActions from '../../actions/Generator';
 import { RouteComponentProps } from 'react-router';
-import { fakeData } from './FakeData'
+import { fakeData, CVTemplate } from './FakeData'
 import FloatBox from '../../Utils/DragBox/Box';
 
 
@@ -15,12 +15,14 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     const [elements, loadElements] = React.useState(null)
     const [objElement, setObjElements] = React.useState(null)
     const [selectedItem, chooseItem] = React.useState(null)
+    const [personalInfo, setPersonalInfo] = React.useState<any>(null)
     const [panelStatus, showPanel] = React.useState(false)
     const [posX, setPosX] = React.useState(0)
     const [posY, setPosY] = React.useState(0)
     React.useEffect(() => {
         props.getTemplate(props.match.params.sampleId)
-        loadElements(generateElements())
+        setPersonalInfo(CVTemplate.initialData.personalInfo)
+        // loadElements(generateElements())
     }, []);
     // e.stopPropagation(); thats stop trackin up for click event
 
@@ -36,7 +38,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     }
     const generateElements = (item: any = null) => {
         let elements: any = null
-        const el = item ? item : fakeData.children
+        const el = item ? item : CVTemplate.children
         return el.map((item: any) => {
             switch (item.type) {
                 case "div":
@@ -47,7 +49,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                         <div className="parentPanel">
                             <button onClick={(e) => {
                                 elementSelectHandler(e, item)
-                            }}>{item.type}</button>
+                            }}>{item.tooltip}</button>
                         </div>
                         {generateElements(item.children)}
                     </div>
@@ -59,9 +61,10 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                         <div className="childPanel">
                             <button onClick={(e) => {
                                 elementSelectHandler(e, item)
-                            }}>{item.type}</button>
+                            }}>{item.tooltip}</button>
                         </div>
-                        {item.content}
+                        <span dangerouslySetInnerHTML={{ __html: item.content }} />
+                        {item.contentName ? personalInfo ? personalInfo![item.contentName] : "" : ""}
                     </div>
                 default:
                     return elements;
@@ -69,7 +72,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         })
     }
 
-    console.log("Elements: ", elements)
+    console.log("personalInfo: ", personalInfo)
     return (
         <div className="generatorPage">
             <h1> Generator</h1>
@@ -79,7 +82,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                 posY = {posY < 10 ? posY + 50 : posY}
                  onClose={panelCloseHandler} />}
                 <div className="template">
-                    {elements}
+                    {generateElements()}
                 </div>
                 <div className="generatorSideBar">
                     <h3>Sidebar</h3>

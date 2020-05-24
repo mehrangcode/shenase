@@ -16,15 +16,23 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     const [objElement, setObjElements] = React.useState(null)
     const [selectedItem, chooseItem] = React.useState(null)
     const [panelStatus, showPanel] = React.useState(false)
+    const [posX, setPosX] = React.useState(0)
+    const [posY, setPosY] = React.useState(0)
     React.useEffect(() => {
         props.getTemplate(props.match.params.sampleId)
         loadElements(generateElements())
     }, []);
     // e.stopPropagation(); thats stop trackin up for click event
 
-    const elementSelectHandler = (item: any) => {
+    const elementSelectHandler = (e: any, item: any) => {
+        setPosX(e.pageX);
+        setPosY(e.pageY);
         chooseItem(item);
         showPanel(true)
+    }
+    const panelCloseHandler = () => {
+        showPanel(false);
+        chooseItem(null)
     }
     const generateElements = (item: any = null) => {
         let elements: any = null
@@ -38,8 +46,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                         style={item.style}>
                         <div className="parentPanel">
                             <button onClick={(e) => {
-                                console.log(e.pageX)
-                                elementSelectHandler(item)
+                                elementSelectHandler(e, item)
                             }}>{item.type}</button>
                         </div>
                         {generateElements(item.children)}
@@ -50,8 +57,8 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                         key={item.id}
                         style={item.style}>
                         <div className="childPanel">
-                            <button onClick={() => {
-                                elementSelectHandler(item)
+                            <button onClick={(e) => {
+                                elementSelectHandler(e, item)
                             }}>{item.type}</button>
                         </div>
                         {item.content}
@@ -67,7 +74,10 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         <div className="generatorPage">
             <h1> Generator</h1>
             <div className="engine">
-                {panelStatus && <FloatBox onClose={() => showPanel(false)} />}
+                {panelStatus && <FloatBox
+                posX = {posX > 700 ? posX - 600 : posX}
+                posY = {posY < 10 ? posY + 50 : posY}
+                 onClose={panelCloseHandler} />}
                 <div className="template">
                     {elements}
                 </div>

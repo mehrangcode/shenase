@@ -26,6 +26,19 @@ export default class Window extends React.Component<any, any> {
     componentDidMount() {
         document.addEventListener('mousemove', this.onDrag.bind(this));
         document.addEventListener('mouseup', this.onDragStop.bind(this));
+        this.setState({
+            x: this.props.posX,
+            y: this.props.posY
+        })
+    }
+    componentDidUpdate(prevProps: any){
+        if(!this.state.isDragging && 
+            (prevProps.posX !== this.props.posX || prevProps.posY !== this.props.posY)){
+            this.setState({
+                x: this.props.posX,
+                y: this.props.posY
+            })
+        }
     }
     render() {
         if (this.props.isHidden) {

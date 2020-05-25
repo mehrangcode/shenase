@@ -84,7 +84,7 @@ export default class FloatBox extends React.Component<any, any> {
         if (this.state.isDragging) {
             this.setState({
                 x: clamp(e.pageX - this.state.xDiff),
-                y: clamp(e.pageY - this.state.yDiff)
+                y: e.pageY - this.state.yDiff
             });
         }
     }

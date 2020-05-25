@@ -7,7 +7,7 @@ const clamp = function(n: any) {
         1110 - 400);
 };
 
-export default class Window extends React.Component<any, any> {
+export default class FloatBox extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -54,15 +54,11 @@ export default class Window extends React.Component<any, any> {
             <div className="floatBox" style={style}>
                 <div className="floatBoxTitle"
                      onMouseDown={this.onDragStart}>
-                    <div>Panel</div>
+                    <div>Editor</div>
                     <div style={{cursor: "pointer"}} onClick={() => this.props.onClose()}>X</div>
-                    
                 </div>
                 <div className="floatBoxBody">
-                    <div className="hr-diagram">
-                        Box
-                    </div>
-                    
+                   {this.props.children}
                 </div>
             </div>
         );

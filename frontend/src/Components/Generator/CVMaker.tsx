@@ -49,16 +49,13 @@ const CVMaker: React.FC<IProps> = (props: IProps) => {
                         className={item.className}
                         key={item.id}
                         style={item.style}>
-                        {item.content ?
-                         <div className="col mv-2" dangerouslySetInnerHTML={{ __html: item.content }} /> 
-                         : null}
                         {personalInfo && personalInfo.skills.map((skill: any) => {
                             return <div 
                             key={skill.id} 
                             className={"col-" + Math.floor(12 / item.cols)}>
                                 <div className="row">
                                     <span className="mr-1" >{skill.title}</span>
-                                    <span > <CircleRate rate={skill.rate} /> </span>
+                                    {skill.rate && <span > <CircleRate rate={skill.rate} /> </span>}
                                 </div>
                             </div>
                         })}

@@ -3,23 +3,20 @@
     height: 0px;
     display: none;
 }
-.parentPanel {
+.editorPanel {
     position: absolute;
     left: 0px;
-    bottom: 100%;
+    top: 0;
     display: none;
+    z-index: 20;
 }
-.childPanel {
-    position: absolute;
-    left: 0;
-    bottom: 100%;
-    display: none;
-}
-.el:hover > .childPanel,
-.el:hover > .parentPanel {
+
+
+.el:hover > .editorPanel {
     display: block;
 }
 .el:hover {
+    padding-top: 15px;
     border: 1px dashed royalblue !important;
 }
 
@@ -59,7 +56,6 @@
 	height: 25px;
 	cursor: move;
 	background-color: #18a689;
-	margin-bottom: 15px;
 	padding: 5px 10px;
 	color: white;
 	display: flex;

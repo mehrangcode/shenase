@@ -11,7 +11,7 @@ import { IApplicationState } from '../../store/state';
 import PanelPage from '../Panel/PanelPage';
 import CalendarPage from '../Calendar/CalendarPage';
 import Footer from '../Footer';
-// import Generator from '../Generator';
+import Generator from '../Generator';
 import CVMaker from '../Generator/CVMaker';
 
 
@@ -24,7 +24,10 @@ const LayoutManager: React.FC<IProps> = (props: IProps) => {
             <div className="layoutManeger">
             <Switch>
                 {props.isAuth ? (
-                <Route path="/generator/:sampleId" component={CVMaker} />
+                <Route path="/generator/:sampleId" component={Generator} />
+                    ) : null}
+                {props.isAuth ? (
+                <Route path="/cvMaker/:sampleId" component={CVMaker} />
                     ) : null}
                 {props.isAuth ? (
                 <Route path="/calendar" component={CalendarPage} />

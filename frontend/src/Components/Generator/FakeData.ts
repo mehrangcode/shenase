@@ -132,21 +132,87 @@ export const CVTemplate = {
                     contentName: "name"}
                 ]},
                 {tooltip: "Col", id: "el03", type: "div", style: null, className:"col-8", children:[
+                    {
+                        tooltip: "Profile", id: "profile",
+                        type: "contentBox", className: "mb-2",
+                        style: null, content: "Profile:"
+                    },
                     {tooltip: "contentBox", id: "el03", 
                     type:"contentBox", 
                     style: null, 
-                    className: "contentBox", 
-                    content: "<p> Profile: </p>", 
+                    className: "contentBox",
                     contentName: "aboutMe"},
+                    {
+                        tooltip: "Title", id: "skillTitle",
+                        type: "contentBox", className: "mv-2",
+                        style: {color: "red", fontWeight: "bold"}, content: "Skills:"
+                    },
                     {
                         tooltip: "Skills", id: "skill",
                         type: "skills", className: "row",
-                        style: null, content: "Skills:",
+                        style: null,
                         cols: 3,
                     }
 
                 ]}
             ]
         }
+    ]
+}
+
+export const Blank = {
+    title: "Title",
+    children: [
+        {
+            id: "id001",
+            tooltip: "Row",
+            type: "row",
+            className: "row",
+            style: null,
+            children: [
+                {
+                    id: "id002",
+                    tooltip: "Col",
+                    type: "col",
+                    className: "col-6",
+                    style: null,
+                    content: "COL 01"
+                },
+                {
+                    id: "id002",
+                    tooltip: "Col",
+                    type: "col",
+                    className: "col-6",
+                    style: null,
+                    content: "COL 02"
+                },
+                {
+                    id: "id003",
+                    tooltip: "Col",
+                    type: "col",
+                    className: "col-6",
+                    style: null,
+                   
+                    children: [
+                        {
+                            id: "id004",
+                            tooltip: "contentBox",
+                            type: "contentBox",
+                            className: "col-6",
+                            style: null,
+                            content: "contentBox 03"
+                        },
+                        {
+                            id: "id005",
+                            tooltip: "contentBox",
+                            type: "contentBox",
+                            className: "col-6",
+                            style: null,
+                            content: "contentBox"
+                        },
+                    ]
+                },
+            ]
+        },
     ]
 }

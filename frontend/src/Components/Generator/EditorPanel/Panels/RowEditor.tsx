@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Select from '../../../../Utils/Select/Select';
 import BorderEditor from '../Blocks/Border';
 
 interface IProps {
@@ -56,6 +55,7 @@ export const RowEditor = (props: IProps) => {
         </div>
         <div className="tabs">
             {tabIndex === 1 && (
+                
                 <React.Fragment>
                     <div>
                         Columns:
@@ -73,11 +73,13 @@ export const RowEditor = (props: IProps) => {
             {tabIndex === 2 && (
                 <React.Fragment>
                     <p>Style: </p>
-                    <BorderEditor onChange={(value: string) => styleChanageHandler("border", value)} />
+                    <BorderEditor 
+                    border = {objElement.style && objElement.style.border ? objElement.style.border : "" }
+                    onChange={(value: string) => styleChanageHandler("border", value)} />
                 </React.Fragment>
             )}
         </div>
-        <div className="row">
+        <div className="row mt-3">
             <button onClick={()=>{
                 props.onClose();
             }}>Confirm</button>

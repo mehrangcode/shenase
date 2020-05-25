@@ -2,12 +2,13 @@ import * as React from 'react';
 import Select from '../../../../Utils/Select/Select';
 
 interface IProps {
+    border: string
     onChange: (value: string)=> void
 }
 
 const BorderEditor = (props: IProps) => {
 
-    const [border, setBorder] = React.useState<string>("1px solid black")
+    const [border, setBorder] = React.useState<string>(props.border)
 
     React.useEffect(()=>{
         props.onChange(border)
@@ -26,8 +27,8 @@ const BorderEditor = (props: IProps) => {
             <div className="row">
                 <div className="col-4">
                     <div> size:</div>
-                    <div> <Select 
-                    initialvalue="1px"
+                    <div> <Select
+                        initialvalue= {border.split(" ")[0] ? border.split(" ")[0] : ""}
                         onChange={(value: string)=> modifyBorder(0, value)}
                         optionList={[
                             { id: "1px", title: "1px" },
@@ -39,8 +40,8 @@ const BorderEditor = (props: IProps) => {
                 </div>
                 <div className="col-4">
                     <div> style:</div>
-                    <div> <Select 
-                    initialvalue="solid"
+                    <div> <Select
+                        initialvalue= {border.split(" ")[1] ? border.split(" ")[1] : ""}
                         onChange={(value: string)=> modifyBorder(1, value)}
                         optionList={[
                             { id: "solid", title: "solid" },
@@ -51,8 +52,8 @@ const BorderEditor = (props: IProps) => {
                 </div>
                 <div className="col-4">
                     <div> color:</div>
-                    <div> <Select 
-                    initialvalue="black"
+                    <div> <Select
+                        initialvalue= {border.split(" ")[2] ? border.split(" ")[2] : ""}
                         onChange={(value: string)=> modifyBorder(2, value)}
                         optionList={[
                             { id: "black", title: "black" },

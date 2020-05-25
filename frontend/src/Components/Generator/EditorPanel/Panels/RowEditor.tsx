@@ -18,9 +18,12 @@ export const RowEditor = (props: IProps) => {
 
     React.useEffect(() => {
         props.onConfirm(objElement)
-        console.log("OLD: ", oldObj)
     }, [objElement]);
 
+    React.useEffect(() => {
+        updateElement(props.item)
+    }, [props.item]);
+    
     const tabsHandler = (index: number) => {
         setTabIndex(index)
     }
@@ -42,9 +45,7 @@ export const RowEditor = (props: IProps) => {
         el.style = newStyle;
         updateElement(el)
     }
-    console.log("Obj: ", objElement)
     return <div className="rowEditor">
-        <p>rowEditor</p>
         <div className="row">
             <div onClick={() => tabsHandler(1)}>Content</div>
             <div onClick={() => tabsHandler(2)}>Style</div>
@@ -72,7 +73,6 @@ export const RowEditor = (props: IProps) => {
             )}
             {tabIndex === 2 && (
                 <React.Fragment>
-                    <p>Style: </p>
                     <BorderEditor 
                     border = {objElement.style && objElement.style.border ? objElement.style.border : "" }
                     onChange={(value: string) => styleChanageHandler("border", value)} />

@@ -22,9 +22,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         // props.getTemplate(props.match.params.sampleId)
         loadtemplate(Blank)
     }, []);
-    React.useEffect(() => {
-    console.log("EL: ", template)
-    }, [template]);
+    
     // e.stopPropagation(); thats stop trackin up for click event
 
     const elementSelectHandler = (e: any, item: any) => {
@@ -127,7 +125,6 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     }
     const elementsUpdateHandler= (item: any) => {
         const newTemp = updateElements(null, item);
-        console.log("newTemp: ", newTemp)
         loadtemplate(null)
         loadtemplate(newTemp)
     }
@@ -137,13 +134,12 @@ const Generator: React.FC<IProps> = (props: IProps) => {
             <div className="engine">
                 {panelStatus && <FloatBox
                 posX = {posX > 700 ? posX - 600 : posX}
-                posY = {posY < 10 ? posY + 50 : posY}>
-                     
+                posY = {posY < 10 ? posY + 50 : posY}
+                     title = {selectedItem?.tooltip}>
                      <EditorManager 
                      item={selectedItem} 
                      onClose={panelCloseHandler}
                      onConfirm= {(updatedElement) => {
-                        console.log("Confirm: ", updatedElement)
                         elementsUpdateHandler(updatedElement)
                      }} />
                      </FloatBox>}

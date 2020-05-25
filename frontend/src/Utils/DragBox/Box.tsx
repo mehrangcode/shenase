@@ -54,7 +54,7 @@ export default class FloatBox extends React.Component<any, any> {
             <div className="floatBox" style={style}>
                 <div className="floatBoxTitle"
                      onMouseDown={this.onDragStart}>
-                    <div>Editor</div>
+                    <div>{this.props.title}</div>
                 </div>
                 <div className="floatBoxBody">
                    {this.props.children}

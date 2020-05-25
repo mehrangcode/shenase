@@ -172,6 +172,23 @@ export const Blank = {
             cols: 2,
             children: [
                 {
+                    id: "id002345po",
+                    tooltip: "Row",
+                    type: "row",
+                    className: "row col-6",
+
+                    children: [
+                        {
+                            id: "id00234567",
+                            tooltip: "Col",
+                            type: "col",
+                            className: "col-6 mb-2",
+                            style: null,
+                            content: "COL In Row"
+                        },
+                    ]
+                },
+                {
                     id: "id002",
                     tooltip: "Col",
                     type: "col",

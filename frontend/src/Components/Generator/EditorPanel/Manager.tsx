@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {RowEditor} from './RowEditor'
+import {RowEditor} from './Panels/RowEditor'
 interface IProps {
     item: any;
     onConfirm: (updatedElement: any) => void;
+    onClose: () => void;
 }
 
 const EditorManager = (props: IProps) => {

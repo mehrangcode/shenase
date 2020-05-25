@@ -55,7 +55,6 @@ export default class FloatBox extends React.Component<any, any> {
                 <div className="floatBoxTitle"
                      onMouseDown={this.onDragStart}>
                     <div>Editor</div>
-                    <div style={{cursor: "pointer"}} onClick={() => this.props.onClose()}>X</div>
                 </div>
                 <div className="floatBoxBody">
                    {this.props.children}

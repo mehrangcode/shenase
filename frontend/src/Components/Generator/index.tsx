@@ -137,11 +137,11 @@ const Generator: React.FC<IProps> = (props: IProps) => {
             <div className="engine">
                 {panelStatus && <FloatBox
                 posX = {posX > 700 ? posX - 600 : posX}
-                posY = {posY < 10 ? posY + 50 : posY}
-                 onClose={panelCloseHandler}>
+                posY = {posY < 10 ? posY + 50 : posY}>
                      
                      <EditorManager 
                      item={selectedItem} 
+                     onClose={panelCloseHandler}
                      onConfirm= {(updatedElement) => {
                         console.log("Confirm: ", updatedElement)
                         elementsUpdateHandler(updatedElement)

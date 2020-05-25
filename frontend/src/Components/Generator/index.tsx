@@ -6,6 +6,7 @@ import * as GeneratorActions from '../../actions/Generator';
 import { RouteComponentProps } from 'react-router';
 import { Blank } from './FakeData'
 import FloatBox from '../../Utils/DragBox/Box';
+import EditorManager from './EditorPanel/Manager';
 
 
 type IProps = IGeneratorState & typeof GeneratorActions & RouteComponentProps<{ sampleId: string }>;
@@ -21,6 +22,9 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         // props.getTemplate(props.match.params.sampleId)
         loadtemplate(Blank)
     }, []);
+    React.useEffect(() => {
+    console.log("EL: ", template)
+    }, [template]);
     // e.stopPropagation(); thats stop trackin up for click event
 
     const elementSelectHandler = (e: any, item: any) => {
@@ -45,10 +49,11 @@ const Generator: React.FC<IProps> = (props: IProps) => {
             temp = item
         }
         return temp.map((item: any) => {
+            const className = item.className + (item.children ? " isParrent" : " isChild")
             switch (item.type) {
                 case "div":
                     return elements = <div
-                        className={item.className + " el"}
+                        className={className}
                         key={item.id}
                         style={item.style}>
                         <div className="editorPanel">
@@ -62,7 +67,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                     </div>
                 case "row":
                     return elements = <div
-                        className={item.className + " el"}
+                        className= {className}
                         key={item.id}
                         style={item.style}>
                         <div className="editorPanel">
@@ -76,7 +81,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                     </div>
                 case "col":
                     return elements = <div
-                        className={item.className + " el"}
+                        className= {className}
                         key={item.id}
                         style={item.style}>
                         <div className="editorPanel">
@@ -90,7 +95,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                     </div>
                 case "contentBox":
                     return elements = <div
-                        className={item.className + " el"}
+                        className= {className}
                         key={item.id}
                         style={item.style}>
                         <div className="editorPanel">
@@ -105,6 +110,27 @@ const Generator: React.FC<IProps> = (props: IProps) => {
             }
         })
     }
+
+    const updateElements = (source: any, item: any) => {
+        const root = JSON.parse(JSON.stringify(source ? source : template));
+        const newRoot = root.children.map((child: any) => {
+            if(child.children){
+                child = updateElements(child, item)
+            }
+            if(child.id === item.id){
+                child = {...item}
+            }
+            return child
+        })
+        root.children = newRoot;
+        return root
+    }
+    const elementsUpdateHandler= (item: any) => {
+        const newTemp = updateElements(null, item);
+        console.log("newTemp: ", newTemp)
+        loadtemplate(null)
+        loadtemplate(newTemp)
+    }
     return (
         <div className="generatorPage">
             <h1> Generator</h1>
@@ -113,7 +139,13 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                 posX = {posX > 700 ? posX - 600 : posX}
                 posY = {posY < 10 ? posY + 50 : posY}
                  onClose={panelCloseHandler}>
-                     <h3> { selectedItem?.type } </h3>
+                     
+                     <EditorManager 
+                     item={selectedItem} 
+                     onConfirm= {(updatedElement) => {
+                        console.log("Confirm: ", updatedElement)
+                        elementsUpdateHandler(updatedElement)
+                     }} />
                      </FloatBox>}
                 <div className="template">
                     {generateElements()}

@@ -169,17 +169,18 @@ export const Blank = {
             type: "row",
             className: "row",
             style: null,
+            cols: 2,
             children: [
                 {
                     id: "id002",
                     tooltip: "Col",
                     type: "col",
-                    className: "col-6",
+                    className: "col-6 mb-2",
                     style: null,
                     content: "COL 01"
                 },
                 {
-                    id: "id002",
+                    id: "id002365",
                     tooltip: "Col",
                     type: "col",
                     className: "col-6",

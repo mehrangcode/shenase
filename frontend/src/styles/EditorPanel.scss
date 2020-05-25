@@ -1,0 +1,10 @@
+.rowEditor {
+
+    .cols {
+        border: 1px solid #666;
+        cursor: pointer;
+        &:hover {
+            background-color: lightgray;
+        }
+    }
+}

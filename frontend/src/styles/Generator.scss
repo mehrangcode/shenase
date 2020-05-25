@@ -11,12 +11,15 @@
     z-index: 20;
 }
 
-
-.el:hover > .editorPanel {
+.isChild:hover > .editorPanel,
+.isParrent:hover > .editorPanel {
     display: block;
 }
-.el:hover {
-    padding-top: 15px;
+.isParrent:hover {
+    padding-top: 15px ;
+    border: 1px dashed royalblue !important;
+}
+.isChild:hover {
     border: 1px dashed royalblue !important;
 }
 

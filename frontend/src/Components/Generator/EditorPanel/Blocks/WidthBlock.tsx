@@ -4,6 +4,7 @@ const SizeAmount = (props: { onChange: (value: number) => void; width: number })
      const [rateIndex, setIndex] = React.useState(0)
      const rateHandler = (index: number) => {
          setIndex(index)
+         props.onChange(index)
      }
 
     return (

@@ -6,6 +6,7 @@ import AddElementBlock from '../Blocks/AddElement';
 interface IProps {
     item: any;
     onConfirm: (updatedElement: any) => void;
+    onSubmit: (updatedElement: any) => void;
     onClose: () => void;
 }
 
@@ -24,6 +25,11 @@ export const RowEditor = (props: IProps) => {
 
     React.useEffect(() => {
         updateElement(props.item)
+        if(oldObj && props.item){
+            if (oldObj.id !== props.item) {
+                setOldObj(JSON.parse(JSON.stringify(props.item)))
+            }
+        }
     }, [props.item]);
     
     const tabsHandler = (index: number) => {
@@ -55,10 +61,6 @@ export const RowEditor = (props: IProps) => {
         if(index >= 0){
             newChildren[index] = el
         } else {
-            el = {
-                id: "id:"+ new Date().getTime(),
-                ...element
-            }
             newChildren.push(el)
         }
         updateElement({...parrent, children: newChildren})
@@ -75,8 +77,7 @@ export const RowEditor = (props: IProps) => {
         <div className="tabs">
             {tabIndex === 1 && (
                 <AddElementBlock addElement={(value) => {
-                    addingElementHandler(value);
-                    console.log("ADD: ", value)}} />
+                    addingElementHandler(value)}} />
                 )}
             {tabIndex === 2 && (
                 <React.Fragment>
@@ -89,6 +90,7 @@ export const RowEditor = (props: IProps) => {
         </div>
         <div className="row mt-3">
             <button onClick={()=>{
+                props.onSubmit(objElement);
                 props.onClose();
             }}>Confirm</button>
             <button onClick={()=>{

@@ -3,6 +3,7 @@ import {RowEditor} from './Panels/RowEditor'
 interface IProps {
     item: any;
     onConfirm: (updatedElement: any) => void;
+    onSubmit: (updatedElement: any) => void;
     onClose: () => void;
 }
 

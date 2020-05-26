@@ -42,7 +42,8 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         setPosX(e.pageX);
         setPosY(e.pageY);
         chooseItem(item);
-        loadtemplate(deleteExtraElement(null))
+        const xx = deleteExtraElement(null)
+        loadtemplate(xx)
         showPanel(true)
     }
     const panelCloseHandler = () => {
@@ -156,7 +157,20 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         // loadtemplate(null)
         loadtemplate(newTemp)
     }
-    console.log("Temp: ", template)
+    const onModalSubmit= (item: any) => {
+        const itemX = item;
+        if(item.children){
+            itemX.children = item.children.map((x:any) => {
+                if(x.id === "newElement"){
+                    x.id = "id" + new Date().getTime();
+                }
+                return x;
+            })
+        }
+        const newTemp = updateElements(null, itemX);
+        // loadtemplate(null)
+        loadtemplate(newTemp)
+    }
     return (
         <div className="generatorPage">
             <h1> Generator</h1>
@@ -168,6 +182,9 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                      <EditorManager 
                      item={selectedItem} 
                      onClose={panelCloseHandler}
+                     onSubmit = {(updatedElement: any) => {
+                        onModalSubmit(updatedElement)
+                     }}
                      onConfirm= {(updatedElement) => {
                         elementsUpdateHandler(updatedElement)
                      }} />

@@ -19,7 +19,12 @@ const AddElementBlock = (props: IProps) => {
             style: null,
             className: "col-" + elementWidth
         };
-        props.addElement(newEl);
+        if(elementWidth < 1){
+            props.addElement(null);
+        } else {
+            props.addElement(newEl);
+        }
+        setElement({name: "", width: elementWidth})
 
     }
     return (

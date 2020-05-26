@@ -1,5 +1,7 @@
 import * as React from 'react';
 import BorderEditor from '../Blocks/Border';
+import FlexBaisBlock from '../Blocks/FlexBaisBlock';
+import AddElementBlock from '../Blocks/AddElement';
 
 interface IProps {
     item: any;
@@ -45,6 +47,22 @@ export const RowEditor = (props: IProps) => {
         el.style = newStyle;
         updateElement(el)
     }
+    const addingElementHandler = (element: any) => {
+        let el = element
+        const parrent = {...objElement}
+        const newChildren = parrent.children ? parrent.children : [];
+        const index = newChildren.findIndex((x: any) => x.id === element.id)
+        if(index >= 0){
+            newChildren[index] = el
+        } else {
+            el = {
+                id: "id:"+ new Date().getTime(),
+                ...element
+            }
+            newChildren.push(el)
+        }
+        updateElement({...parrent, children: newChildren})
+    }
     return <div className="rowEditor">
         <div className="row">
             <div onClick={() => tabsHandler(1)}>Content</div>
@@ -56,23 +74,13 @@ export const RowEditor = (props: IProps) => {
         </div>
         <div className="tabs">
             {tabIndex === 1 && (
-                
-                <React.Fragment>
-                    <div>
-                        Columns:
-                    </div>
-                    <div className="row">
-                        <div className="col-2 cols" onClick={() => colsHandler(1)}>1 Col</div>
-                        <div className="col-2 cols" onClick={() => colsHandler(2)}>2 Col</div>
-                        <div className="col-2 cols" onClick={() => colsHandler(3)}>3 Col</div>
-                        <div className="col-2 cols" onClick={() => colsHandler(4)}>4 Col</div>
-                        <div className="col-2 cols" onClick={() => colsHandler(5)}>5 Col</div>
-                        <div className="col-2 cols" onClick={() => colsHandler(6)}>6 Col</div>
-                    </div>
-                </React.Fragment>
-            )}
+                <AddElementBlock addElement={(value) => {
+                    addingElementHandler(value);
+                    console.log("ADD: ", value)}} />
+                )}
             {tabIndex === 2 && (
                 <React.Fragment>
+                    <FlexBaisBlock colsHandler={(value) => colsHandler(value)} />
                     <BorderEditor 
                     border = {objElement.style && objElement.style.border ? objElement.style.border : "" }
                     onChange={(value: string) => styleChanageHandler("border", value)} />

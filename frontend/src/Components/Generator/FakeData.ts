@@ -173,7 +173,7 @@ export const Blank = {
             children: [
                 {
                     id: "id002345po",
-                    tooltip: "Row",
+                    tooltip: "Row IN Row",
                     type: "row",
                     className: "row col-6",
 

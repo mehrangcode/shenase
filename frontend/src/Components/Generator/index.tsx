@@ -25,10 +25,24 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     
     // e.stopPropagation(); thats stop trackin up for click event
 
+    const deleteExtraElement = (source: any) => {
+        const root = source ? source : template;
+        root.children = root.children.filter((x: any) => x.id !== "newElement")
+        const newRoot = root.children.map((child: any) => {
+            if(child.children){
+                child = deleteExtraElement(child)
+            }
+            return child
+        })
+        root.children = newRoot;
+        return root
+    }
+
     const elementSelectHandler = (e: any, item: any) => {
         setPosX(e.pageX);
         setPosY(e.pageY);
         chooseItem(item);
+        loadtemplate(deleteExtraElement(null))
         showPanel(true)
     }
     const panelCloseHandler = () => {
@@ -47,7 +61,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
             temp = item
         }
         return temp.map((item: any) => {
-            const className = item.className + (item.children ? " isParrent" : " isChild")
+            const className = item.className + (item.children && item.children.length > 0 ? " isParrent" : " isChild")
             switch (item.type) {
                 case "div":
                     return elements = <div
@@ -78,6 +92,20 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                         generateElements(item.children)}
                     </div>
                 case "col":
+                    return elements = <div
+                        className= {className}
+                        key={item.id}
+                        style={item.style}>
+                        <div className="editorPanel">
+                            <button onClick={(e) => {
+                                elementSelectHandler(e, item)
+                            }}>{item.tooltip}</button>
+                        </div>
+                        {item.content ? 
+                        <div dangerouslySetInnerHTML={{ __html: item.content }} /> : 
+                        generateElements(item.children)}
+                    </div>
+                case "box":
                     return elements = <div
                         className= {className}
                         key={item.id}
@@ -125,9 +153,10 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     }
     const elementsUpdateHandler= (item: any) => {
         const newTemp = updateElements(null, item);
-        loadtemplate(null)
+        // loadtemplate(null)
         loadtemplate(newTemp)
     }
+    console.log("Temp: ", template)
     return (
         <div className="generatorPage">
             <h1> Generator</h1>

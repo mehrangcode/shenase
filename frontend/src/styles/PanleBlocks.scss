@@ -1,0 +1,23 @@
+
+.elementName {
+    margin: 0 5px;
+}
+.addBox {
+	display: flex;
+	align-items: center;
+}
+.colSizeboxes {
+	display: flex;
+	flex: 1;
+}
+.colSize {
+	border: 1px solid black;
+	height: 10px;
+	flex: 1;
+}
+.colSizeActive {
+    background-color: lightcoral;
+	border: 1px solid black;
+	height: 10px;
+	flex: 1;
+}

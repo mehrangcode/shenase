@@ -19,6 +19,13 @@ export const RowEditor = (props: IProps) => {
         setOldObj(JSON.parse(JSON.stringify(props.item)))
     }, []);
 
+    React.useEffect(()=> {
+    const newObj = JSON.parse(JSON.stringify(objElement))
+    if(newObj.children) {
+        newObj.children = objElement.children.filter((x:any)=> x.id !== "newElement")
+    }
+    updateElement(newObj)
+    },[tabIndex])
     React.useEffect(() => {
         props.onConfirm(objElement)
     }, [objElement]);

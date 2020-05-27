@@ -25,4 +25,14 @@
 	align-items: center;
 	justify-content: center;
 	opacity: 0.5;
+	position: absolute;
+}
+.boxes {
+	display: flex;
+	justify-content: start;
+	align-items: start;
+	gap: 10px;
+	background-color: #eee;
+	padding: 5px;
+	flex-flow: row wrap;
 }

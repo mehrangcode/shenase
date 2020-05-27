@@ -45,10 +45,11 @@ export const RowEditor = (props: IProps) => {
     const colsHandler = (colsAmount: number) => {
         const row = { ...objElement }
         const newChildren = row.children.map((child: any) => {
-            child.style = {...child.style, width: (100 / colsAmount) +"%"}
+            child.style = {...child.style, width: (100 / colsAmount) +"%",  minWidth: (100 / colsAmount) +"%"}
             return child;
         })
         row.children = newChildren
+        row.style = {...row.style, flexFlow: "row wrap"}
         row.cols = colsAmount;
 
         updateElement(row)

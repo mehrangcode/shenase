@@ -19,7 +19,7 @@ const AddElementBlock = (props: IProps) => {
             children: [],
             style: {
                 borderRadius: "10px",
-                height: "350px",
+                minHeight: "350px",
                 border: "1px solid black",
                 display: "flex",
                 flexFlow: "column wrap",

@@ -49,7 +49,12 @@ export const RowEditor = (props: IProps) => {
             return child;
         })
         row.children = newChildren
-        row.style = {...row.style, flexFlow: "row wrap"}
+        row.style = {...row.style, 
+            display: "flex",
+            flexFlow: "row wrap", 
+            justifyContent: "start",
+            alignItems: "start"
+        }
         row.cols = colsAmount;
 
         updateElement(row)

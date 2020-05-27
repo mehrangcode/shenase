@@ -18,7 +18,7 @@ export const ThumboxesList = [
             alignItems: "start",
             backgroundColor: "white"
         },
-        placeHolder: "BOX",
+        placeHolder: "Add Item",
         content: null,
         children: []
     },
@@ -39,7 +39,7 @@ export const ThumboxesList = [
             alignItems: "start",
             backgroundColor: "royalblue"
         },
-        placeHolder: "BOX",
+        placeHolder: "Add Item",
         content: null,
         children: []
     },

@@ -117,38 +117,38 @@ export const CVTemplate = {
     },
     children: [
         {
-            placeHolder: "placeHolder", tooltip: "Row",
+            placeHolder: "Add Item", tooltip: "Row",
             id: "el01",
             type: "div",
             style: null,
             className: "row",
             children: [
-                {placeHolder: "placeHolder", tooltip: "Col", id: "el02", type: "div", style: null, className:"col-4", children:[
-                    {placeHolder: "placeHolder", tooltip: "contentBox", id: "el03", 
+                {placeHolder: "Add Item", tooltip: "Col", id: "el02", type: "div", style: null, className:"col-4", children:[
+                    {placeHolder: "Add Item", tooltip: "contentBox", id: "el03", 
                     type:"contentBox", 
                     style: null, 
                     className: "contentBox", 
                     content: "Name : ", 
                     contentName: "name"}
                 ]},
-                {placeHolder: "placeHolder", tooltip: "Col", id: "el03", type: "div", style: null, className:"col-8", children:[
+                {placeHolder: "Add Item", tooltip: "Col", id: "el03", type: "div", style: null, className:"col-8", children:[
                     {
-                        placeHolder: "placeHolder", tooltip: "Profile", id: "profile",
+                        placeHolder: "Add Item", tooltip: "Profile", id: "profile",
                         type: "contentBox", className: "mb-2",
                         style: null, content: "Profile:"
                     },
-                    {placeHolder: "placeHolder", tooltip: "contentBox", id: "el03", 
+                    {placeHolder: "Add Item", tooltip: "contentBox", id: "el03", 
                     type:"contentBox", 
                     style: null, 
                     className: "contentBox",
                     contentName: "aboutMe"},
                     {
-                        placeHolder: "placeHolder", tooltip: "Title", id: "skillTitle",
+                        placeHolder: "Add Item", tooltip: "Title", id: "skillTitle",
                         type: "contentBox", className: "mv-2",
                         style: {color: "red", fontWeight: "bold"}, content: "Skills:"
                     },
                     {
-                        placeHolder: "placeHolder", tooltip: "Skills", id: "skill",
+                        placeHolder: "Add Item", tooltip: "Skills", id: "skill",
                         type: "skills", className: "row",
                         style: null,
                         cols: 3,
@@ -165,7 +165,7 @@ export const Blank = {
     children: [
         {
             id: "id001",
-            placeHolder: "placeHolder", tooltip: "Row",
+            placeHolder: "Add Item", tooltip: "Row",
             type: "row",
             className: "row",
             style: null,
@@ -173,14 +173,14 @@ export const Blank = {
             children: [
                 {
                     id: "id002345po",
-                    placeHolder: "placeHolder", tooltip: "Row IN Row",
+                    placeHolder: "Add Item", tooltip: "Row IN Row",
                     type: "row",
                     className: "row col-6",
 
                     children: [
                         {
                             id: "id00234567",
-                            placeHolder: "placeHolder", tooltip: "Col",
+                            placeHolder: "Add Item", tooltip: "Col",
                             type: "col",
                             className: "col-6 mb-2",
                             style: null,
@@ -190,7 +190,7 @@ export const Blank = {
                 },
                 {
                     id: "id002",
-                    placeHolder: "placeHolder", tooltip: "Col",
+                    placeHolder: "Add Item", tooltip: "Col",
                     type: "col",
                     className: "col-6 mb-2",
                     style: null,
@@ -198,7 +198,7 @@ export const Blank = {
                 },
                 {
                     id: "id002365",
-                    placeHolder: "placeHolder", tooltip: "Col",
+                    placeHolder: "Add Item", tooltip: "Col",
                     type: "col",
                     className: "col-6",
                     style: null,
@@ -206,7 +206,7 @@ export const Blank = {
                 },
                 {
                     id: "id003",
-                    placeHolder: "placeHolder", tooltip: "Col",
+                    placeHolder: "Add Item", tooltip: "Col",
                     type: "col",
                     className: "col-6",
                     style: null,
@@ -214,7 +214,7 @@ export const Blank = {
                     children: [
                         {
                             id: "id004",
-                            placeHolder: "placeHolder", tooltip: "contentBox",
+                            placeHolder: "Add Item", tooltip: "contentBox",
                             type: "contentBox",
                             className: "col-6",
                             style: null,
@@ -222,7 +222,7 @@ export const Blank = {
                         },
                         {
                             id: "id005",
-                            placeHolder: "placeHolder", tooltip: "contentBox",
+                            placeHolder: "Add Item", tooltip: "contentBox",
                             type: "contentBox",
                             className: "col-6",
                             style: null,

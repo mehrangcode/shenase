@@ -40,6 +40,20 @@ const Generator: React.FC<IProps> = (props: IProps) => {
 
     const deleteElementHandler = (item: any) => {
         const xx = JSON.parse(JSON.stringify(deleteExtraElement(null, item.id)));
+        console.log(xx)
+        if(xx.children.length <= 0){
+            xx.children= [
+                {
+                    id: "Root",
+                    type:"box",
+                    tooltip: "Main",
+                    style: null,
+                    children:[],
+                    className: "rootElement isParrent",
+                    placeHolder: "Create Yor own site"
+                }
+            ]
+        }
         loadtemplate(xx);
         panelCloseHandler()
     }
@@ -75,7 +89,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                     className= {className}
                     key={item.id}
                     id={item.id}
-                    style={item.style}>
+                    style={item.children && item.children.length <= 0 ?{...item.style, minHeight:"60px"} : item.style}>
                     {!panelStatus && <div className="editorPanel">
                         <button onClick={(e) => {
                             elementSelectHandler(e, item)
@@ -107,6 +121,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     }
     const elementsUpdateHandler= (item: any) => {
         const newTemp = updateElements(null, item);
+        console.log("TEMP: ", newTemp, item)
         // loadtemplate(null)
         loadtemplate(newTemp)
     }
@@ -124,6 +139,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         // loadtemplate(null)
         loadtemplate(newTemp)
     }
+    console.log("State: ", template)
     return (
         <div className="generatorPage">
             <h1> Generator</h1>

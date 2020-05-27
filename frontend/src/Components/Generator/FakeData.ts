@@ -164,73 +164,25 @@ export const Blank = {
     title: "Title",
     children: [
         {
-            id: "id001",
-            placeHolder: "Add Item", tooltip: "Row",
-            type: "row",
-            className: "row",
-            style: null,
-            cols: 2,
-            children: [
-                {
-                    id: "id002345po",
-                    placeHolder: "Add Item", tooltip: "Row IN Row",
-                    type: "row",
-                    className: "row col-6",
-
-                    children: [
-                        {
-                            id: "id00234567",
-                            placeHolder: "Add Item", tooltip: "Col",
-                            type: "col",
-                            className: "col-6 mb-2",
-                            style: null,
-                            content: "COL In Row"
-                        },
-                    ]
-                },
-                {
-                    id: "id002",
-                    placeHolder: "Add Item", tooltip: "Col",
-                    type: "col",
-                    className: "col-6 mb-2",
-                    style: null,
-                    content: "COL 01"
-                },
-                {
-                    id: "id002365",
-                    placeHolder: "Add Item", tooltip: "Col",
-                    type: "col",
-                    className: "col-6",
-                    style: null,
-                    content: "COL 02"
-                },
-                {
-                    id: "id003",
-                    placeHolder: "Add Item", tooltip: "Col",
-                    type: "col",
-                    className: "col-6",
-                    style: null,
-                   
-                    children: [
-                        {
-                            id: "id004",
-                            placeHolder: "Add Item", tooltip: "contentBox",
-                            type: "contentBox",
-                            className: "col-6",
-                            style: null,
-                            content: "contentBox 03"
-                        },
-                        {
-                            id: "id005",
-                            placeHolder: "Add Item", tooltip: "contentBox",
-                            type: "contentBox",
-                            className: "col-6",
-                            style: null,
-                            content: "contentBox"
-                        },
-                    ]
-                },
-            ]
-        },
+            type: "box",
+            className: "box",
+            tooltip: "Box",
+            style: {
+                position: "relative",
+                boxSizing: "border-box",
+                border: "1px solid black",
+                minHeight: "60px",
+                minWidth: "120px",
+                borderRadius: "10px",
+                display: "flex",
+                flexFlow: "column wrap",
+                justifyContent: "start",
+                alignItems: "start",
+                backgroundColor: "white"
+            },
+            placeHolder: "Add Item",
+            content: null,
+            children: []
+        }
     ]
 }

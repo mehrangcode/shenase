@@ -20,7 +20,39 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     const [posY, setPosY] = React.useState(0)
     React.useEffect(() => {
         // props.getTemplate(props.match.params.sampleId)
-        loadtemplate(Blank)
+        loadtemplate({children:[
+            {
+                id: "Root",
+                type:"box",
+                tooltip: "Main",
+                style: null,
+                children:[
+                    {
+                        type: "box",
+                        className: "box",
+                        tooltip: "Box",
+                        style: {
+                            position: "relative",
+                            boxSizing: "border-box",
+                            border: "1px solid black",
+                            minHeight: "60px",
+                            minWidth: "120px",
+                            borderRadius: "10px",
+                            display: "flex",
+                            flexFlow: "column wrap",
+                            justifyContent: "start",
+                            alignItems: "start",
+                            backgroundColor: "white"
+                        },
+                        placeHolder: "Add Item",
+                        content: null,
+                        children: []
+                    }
+                ],
+                className: "rootElement isParrent",
+                placeHolder: "Create Yor own site"
+            }
+        ]})
     }, []);
     
     // e.stopPropagation(); thats stop trackin up for click event
@@ -89,7 +121,7 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                     className= {className}
                     key={item.id}
                     id={item.id}
-                    style={item.children && item.children.length <= 0 ?{...item.style, minHeight:"60px"} : item.style}>
+                    style={item.style}>
                     {!panelStatus && <div className="editorPanel">
                         <button onClick={(e) => {
                             elementSelectHandler(e, item)

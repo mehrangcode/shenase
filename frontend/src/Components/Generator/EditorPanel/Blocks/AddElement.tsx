@@ -9,33 +9,7 @@ interface IProps {
 }
 const AddElementBlock = (props: IProps) => {
 
-    const [element, setElement] = React.useState({name: "", width: 0})
-    const boxHandler = (elementWidth: number) => {
-        const newEl = {
-            id: "newElement",
-            tooltip: "Box",
-            type: "box",
-            content: "Box" + elementWidth,
-            children: [],
-            style: {
-                borderRadius: "10px",
-                minHeight: "350px",
-                border: "1px solid black",
-                display: "flex",
-                flexFlow: "column wrap",
-                justifyContent: "start",
-                alignItems: "start"
-            },
-            className: "col-" + elementWidth
-        };
-        if(elementWidth < 1){
-            props.addElement(null);
-        } else {
-            props.addElement(newEl);
-        }
-        setElement({name: "", width: elementWidth})
-
-    }
+    const [element, setElement] = React.useState({name: "", width: 0});
     return (
         <div className="addElement">
             <div className="addBox">

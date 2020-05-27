@@ -45,7 +45,7 @@ export const RowEditor = (props: IProps) => {
     const colsHandler = (colsAmount: number) => {
         const row = { ...objElement }
         const newChildren = row.children.map((child: any) => {
-            child.className = "col-" + (12 / colsAmount) + " " + child.className.replace(("col-" + 12 / row.cols), "")
+            child.style = {...child.style, width: (100 / colsAmount) +"%"}
             return child;
         })
         row.children = newChildren

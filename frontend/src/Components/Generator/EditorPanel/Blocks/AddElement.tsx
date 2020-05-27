@@ -1,5 +1,6 @@
 import * as React from 'react';
 import SizeAmount from './WidthBlock';
+import Boxes from '../../ElementList/Box';
 
 
 interface IProps {
@@ -16,7 +17,15 @@ const AddElementBlock = (props: IProps) => {
             type: "box",
             content: "Box" + elementWidth,
             children: [],
-            style: null,
+            style: {
+                borderRadius: "10px",
+                height: "350px",
+                border: "1px solid black",
+                display: "flex",
+                flexFlow: "column wrap",
+                justifyContent: "start",
+                alignItems: "start"
+            },
             className: "col-" + elementWidth
         };
         if(elementWidth < 1){
@@ -34,8 +43,9 @@ const AddElementBlock = (props: IProps) => {
                 <div className="elementName">
                     Box
                 </div>
-                <SizeAmount  width={element.width} 
-                onChange={(value: number) => boxHandler(value)} />
+                <Boxes onChoose={(value: Object) => props.addElement(value)} />
+                {/* <SizeAmount  width={element.width} 
+                onChange={(value: number) => boxHandler(value)} /> */}
             </div>
         </div>
     )

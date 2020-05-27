@@ -64,76 +64,23 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         return temp.map((item: any) => {
             const className = item.className + (item.children && item.children.length > 0 ? " isParrent" : " isChild")
             switch (item.type) {
-                case "div":
-                    return elements = <div
-                        className={className}
-                        key={item.id}
-                        style={item.style}>
-                        <div className="editorPanel">
-                            <button onClick={(e) => {
-                                elementSelectHandler(e, item)
-                            }}>{item.tooltip}</button>
-                        </div>
-                        {item.content ? 
-                        <div dangerouslySetInnerHTML={{ __html: item.content }} /> : 
-                        generateElements(item.children)}
-                    </div>
-                case "row":
-                    return elements = <div
-                        className= {className}
-                        key={item.id}
-                        style={item.style}>
-                        <div className="editorPanel">
-                            <button onClick={(e) => {
-                                elementSelectHandler(e, item)
-                            }}>{item.tooltip}</button>
-                        </div>
-                        {item.content ? 
-                        <div dangerouslySetInnerHTML={{ __html: item.content }} /> : 
-                        generateElements(item.children)}
-                    </div>
-                case "col":
-                    return elements = <div
-                        className= {className}
-                        key={item.id}
-                        style={item.style}>
-                        <div className="editorPanel">
-                            <button onClick={(e) => {
-                                elementSelectHandler(e, item)
-                            }}>{item.tooltip}</button>
-                        </div>
-                        {item.content ? 
-                        <div dangerouslySetInnerHTML={{ __html: item.content }} /> : 
-                        generateElements(item.children)}
-                    </div>
-                case "box":
-                    return elements = <div
-                        className= {className}
-                        key={item.id}
-                        style={item.style}>
-                        <div className="editorPanel">
-                            <button onClick={(e) => {
-                                elementSelectHandler(e, item)
-                            }}>{item.tooltip}</button>
-                        </div>
-                        {item.content ? 
-                        <div dangerouslySetInnerHTML={{ __html: item.content }} /> : 
-                        generateElements(item.children)}
-                    </div>
-                case "contentBox":
-                    return elements = <div
-                        className= {className}
-                        key={item.id}
-                        style={item.style}>
-                        <div className="editorPanel">
-                            <button onClick={(e) => {
-                                elementSelectHandler(e, item)
-                            }}>{item.tooltip}</button>
-                        </div>
-                        <div dangerouslySetInnerHTML={{ __html: item.content }} />
-                    </div>
+
                 default:
-                    return elements;
+                    return elements = <div
+                    className= {className}
+                    key={item.id}
+                    id={item.id}
+                    style={item.style}>
+                    <div className="editorPanel">
+                        <button onClick={(e) => {
+                            elementSelectHandler(e, item)
+                        }}>{item.tooltip}</button>
+                    </div>
+                    {item.content ? 
+                    <div dangerouslySetInnerHTML={{ __html: item.content }} /> : 
+                    item.children  && item.children.length > 0  ? generateElements(item.children) :
+                    <div className="placeHolder"> {item.placeHolder} </div>}
+                </div>;
             }
         })
     }

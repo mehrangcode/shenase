@@ -10,11 +10,8 @@ interface IProps {
 const EditorManager = (props: IProps) => {
 
     switch (props.item.type) {
-        case "row":
-            return <RowEditor {...props} onConfirm={(value) => props.onConfirm(value)} />
-    
         default:
-            return null
+            return <RowEditor {...props} onConfirm={(value) => props.onConfirm(value)} />
     }
 
 }

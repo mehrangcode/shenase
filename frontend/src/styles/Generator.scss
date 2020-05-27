@@ -48,10 +48,34 @@
 	background-color: white;
     border: 1px solid #444;
     position: fixed;
-	width: 350px;
+	width: 550px;
     z-index: 3;
     top: 10vh;
     left: 10vw;
+}
+
+.colorPlaceHolder {
+	background-color: rgb(194, 189, 189);
+	display: inline-block;
+	width: 30px;
+	border: 1px solid black;
+	height: 10px;
+    position: relative;
+}
+.colorBox {
+    position: absolute;
+    top: 100%;
+}
+.colorBoxContainer {
+    position: relative;
+	border: 1px solid #000;
+	width: 30px;
+	display: inline-flex;
+	padding: 5px;
+	height: 15px;
+	align-items: center;
+    cursor: pointer;
+    z-index: 3;
 }
 
 .floatBoxTitle {

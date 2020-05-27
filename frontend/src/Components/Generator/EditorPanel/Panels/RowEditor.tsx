@@ -2,6 +2,7 @@ import * as React from 'react';
 import BorderEditor from '../Blocks/Border';
 import FlexBaisBlock from '../Blocks/FlexBaisBlock';
 import AddElementBlock from '../Blocks/AddElement';
+import ColorBox from '../Blocks/ColorBox';
 
 interface IProps {
     item: any;
@@ -66,6 +67,14 @@ export const RowEditor = (props: IProps) => {
         el.style = newStyle;
         updateElement(el)
     }
+    const bgColorHandler = (value: string) => {
+        const el = {...objElement}
+        const newStyle ={...el.style}
+        newStyle.backgroundColor = value
+        el.style = newStyle;
+        updateElement(el)
+
+    }
     const addingElementHandler = (element: any) => {
         let el = element
         const parrent = {...objElement}
@@ -98,6 +107,10 @@ export const RowEditor = (props: IProps) => {
                     <BorderEditor 
                     border = {objElement.style && objElement.style.border ? objElement.style.border : "" }
                     onChange={(value: string) => styleChanageHandler("border", value)} />
+                    Color: <br />
+                    <ColorBox color={objElement.style ? objElement.backgroundColor : "#0aa"} boxType="sketch" onChange={(value) => {
+                        bgColorHandler(value)
+                    }} />
                 </React.Fragment>
             )}
         </div>

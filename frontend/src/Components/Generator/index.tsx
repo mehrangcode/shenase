@@ -25,12 +25,12 @@ const Generator: React.FC<IProps> = (props: IProps) => {
     
     // e.stopPropagation(); thats stop trackin up for click event
 
-    const deleteExtraElement = (source: any) => {
+    const deleteExtraElement = (source: any, itemId: string) => {
         const root = source ? source : template;
-        root.children = root.children.filter((x: any) => x.id !== "newElement")
+        root.children = root.children.filter((x: any) => x.id !== itemId)
         const newRoot = root.children.map((child: any) => {
             if(child.children){
-                child = deleteExtraElement(child)
+                child = deleteExtraElement(child, itemId)
             }
             return child
         })
@@ -38,11 +38,16 @@ const Generator: React.FC<IProps> = (props: IProps) => {
         return root
     }
 
+    const deleteElementHandler = (item: any) => {
+        const xx = JSON.parse(JSON.stringify(deleteExtraElement(null, item.id)));
+        loadtemplate(xx);
+        panelCloseHandler()
+    }
     const elementSelectHandler = (e: any, item: any) => {
         setPosX(e.pageX);
         setPosY(e.pageY);
         chooseItem(item);
-        const xx = deleteExtraElement(null)
+        const xx = deleteExtraElement(null, "newElement")
         loadtemplate(xx)
         showPanel(true)
     }
@@ -71,11 +76,12 @@ const Generator: React.FC<IProps> = (props: IProps) => {
                     key={item.id}
                     id={item.id}
                     style={item.style}>
-                    <div className="editorPanel">
+                    {!panelStatus && <div className="editorPanel">
                         <button onClick={(e) => {
                             elementSelectHandler(e, item)
                         }}>{item.tooltip}</button>
-                    </div>
+                        <button onClick={() => deleteElementHandler(item)}>X</button>
+                    </div>}
                     {item.content ? 
                     <div dangerouslySetInnerHTML={{ __html: item.content }} /> : 
                     item.children  && item.children.length > 0  ? generateElements(item.children) :
